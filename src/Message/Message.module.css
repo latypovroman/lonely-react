@@ -1,0 +1,13 @@
+.author {
+  margin: 5px 10px 0 10px;
+  font-size: 10px;
+  text-align: right;
+}
+
+.text {
+  margin: 5px 10px 10px 10px;
+  text-align: right;
+}
+.companion {
+  text-align: left;
+}
