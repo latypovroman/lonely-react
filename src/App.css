@@ -3,7 +3,7 @@ body {
 }
 
 .app {
-    padding: 50px 200px;
+    padding: 50px 300px;
     background-color: #917575;
     font-family: "Trebuchet MS", sans-serif;
     min-height: 100vh;
@@ -13,4 +13,21 @@ body {
 .app__logo {
     width: 200px;
     height: 200px;
+}
+
+@media screen and (max-width: 1200px) {
+    .app {
+        padding: 50px 100px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .app {
+        padding: 50px 50px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
 }

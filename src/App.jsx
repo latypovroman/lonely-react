@@ -9,19 +9,16 @@ const defaultChat = [{
         author: "Одинокий тюлень",
         id: 1,
         text: `Привет, ${sessionStorage.getItem("author") || "Незнакомец"}!`,
-        received: true
     },
     {
         author: "Одинокий тюлень",
         id: 2,
         text: "Это чат для одиноких или странных",
-        received: true
     },
     {
         author: "Одинокий тюлень",
         id: 3,
         text: "Тут тебя примут таким(ой), какой ты есть, ведь ты общаешься сам(а) с собой",
-        received: true
     }]
 
 const App = () => {
@@ -57,7 +54,6 @@ const App = () => {
             author: author || "Аноним",
             id: new Date().getTime(),
             text: text,
-            received: false,
         };
         const newChat = [...chat, message];
         setChat(newChat);
@@ -72,7 +68,7 @@ const App = () => {
 
     return (
         <div className="app">
-            <img className="app__logo" src={logo} />
+            <img className="app__logo" alt="forever-alone" src={logo} />
             <h1>Extremely lonely chat</h1>
             <ChatWindow chat={chat}/>
             <ChatForm onSendMessage={onSendMessage}/>

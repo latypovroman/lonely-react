@@ -7,7 +7,7 @@
 
 .form {
     margin-top: 35px;
-    width: 60%;
+    width: 100%;
     display: flex;
 }
 
@@ -20,9 +20,29 @@
     background-color: #2e3136;
     border: none;
     transition: all ease-in 0.2s;
+    color: #838181;
 }
 
 .button:hover {
     background-color: #7b7b7b;
     border: 1px solid #2e3136;
+    color: #363535;
+}
+
+@media screen and (max-width: 720px) {
+    .form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .button {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .input {
+        box-sizing: border-box;
+        width: 100%;
+    }
 }

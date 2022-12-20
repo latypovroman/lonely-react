@@ -9,14 +9,44 @@
 }
 
 .popupContent {
-    padding: 25px;
-    background: white;
+    padding: 30px;
+    background-color: #b6b6b6;
     border-radius: 16px;
-    min-width: 250px;
+    min-width: 350px;
 }
 
 .popup.active {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+}
+
+.input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-right: 5px;
+    border: none;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.button {
+    cursor: pointer;
+    background-color: #2e3136;
+    border: none;
+    transition: all ease-in 0.2s;
+    color: #9a9898;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #7b7b7b;
 }

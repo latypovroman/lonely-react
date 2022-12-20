@@ -23,10 +23,10 @@ const Popup = ({ isOpen, setIsOpen, onSetAuthor }) => {
     return (
         <div className={rootClasses.join(' ')} onClick={() => setIsOpen(false)}>
             <div className={cl.popupContent} onClick={(e) => e.stopPropagation()}>
-                <form onSubmit={onFormSubmit}>
-                    <p>Введите имя пользователя</p>
-                    <input type="text" onChange={onChangeText} value={text}/>
-                    <button type="submit"> Отправить </button>
+                <h2>Введите имя пользователя</h2>
+                <form className={cl.form} onSubmit={onFormSubmit}>
+                    <input className={cl.input} type="text" onChange={onChangeText} value={text}/>
+                    <button className={cl.button} type="submit"> Отправить </button>
                 </form>
             </div>
         </div>
