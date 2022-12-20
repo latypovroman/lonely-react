@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/lonely-react.iml" filepath="$PROJECT_DIR$/.idea/lonely-react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pizza-react/.idea/pizza-react.iml" filepath="$PROJECT_DIR$/../pizza-react/.idea/pizza-react.iml" />
     </modules>
   </component>
 </project>
