@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ChatWindow from "./ChatWindow/ChatWindow";
 import ChatForm from "./ChatForm/ChatForm";
 import Popup from "./Popup/Popup";
@@ -30,6 +30,7 @@ const App = () => {
     }, [])
 
     const onSendMessage = (text) => {
+        const author = sessionStorage.getItem("author");
         const message = {
             author: author || "Аноним",
             id: idCount || new Date().getTime(),
@@ -40,7 +41,7 @@ const App = () => {
     }
 
     const onSetAuthor = (text) => {
-        setAuthor(text);
+        sessionStorage.setItem("author", text);
         setIsPopupOpen(false);
     }
 
