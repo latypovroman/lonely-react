@@ -2,42 +2,65 @@ import React from 'react';
 import ChatWindow from "./ChatWindow/ChatWindow";
 import ChatForm from "./ChatForm/ChatForm";
 import Popup from "./Popup/Popup";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const defaultChat = [{
         author: "Одинокий голубь",
         id: 1,
-        text: "Привет!"
+        text: "Привет!",
+        received: true
     },
     {
         author: "Одинокий голубь",
         id: 2,
-        text: "Это чат для одиноких или странных"
+        text: "Это чат для одиноких или странных",
+        received: true
     },
     {
         author: "Одинокий голубь",
         id: 3,
-        text: "Тут тебя примут таким(ой), какой ты есть, ведь ты общаешься сам(а) с собой"
+        text: "Тут тебя примут таким(ой), какой ты есть, ведь ты общаешься сам(а) с собой",
+        received: true
     }]
 
 const App = () => {
     const [chat, setChat] = React.useState(defaultChat);
-    const [idCount, setIdCount] = React.useState(4);
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-    const [author, setAuthor] = React.useState("Аноним");
+    const author = sessionStorage.getItem("author");
+    const storedChat = localStorage.getItem("chat");
+    const storedParsedChat = JSON.parse(storedChat);
 
     React.useEffect(() => {
-        setIsPopupOpen(true);
-    }, [])
+        if (!author) {
+            setIsPopupOpen(true);
+        }
+    }, [author])
+
+    React.useEffect(() => {
+        if (storedChat && (storedParsedChat.length !== chat.length)) {
+            setChat(storedParsedChat);
+        }
+    }, [chat])
+
+    React.useEffect(() => {
+        window.addEventListener("storage", (evt) => {
+            if (evt.key && storedChat) {
+                setChat(storedParsedChat);
+            }
+        })
+
+    }, [chat])
 
     const onSendMessage = (text) => {
-        const author = sessionStorage.getItem("author");
         const message = {
             author: author || "Аноним",
-            id: idCount || new Date().getTime(),
+            id: new Date().getTime(),
             text: text,
+            received: false,
         };
-        setIdCount(idCount + 1);
-        setChat([...chat, message]);
+        const newChat = [...chat, message];
+        setChat(newChat);
+        localStorage.setItem("chat", JSON.stringify(newChat));
     }
 
     const onSetAuthor = (text) => {
