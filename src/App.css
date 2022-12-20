@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+}
+
+.app {
+    padding: 50px 200px;
+    background-color: #917575;
+    font-family: "Trebuchet MS", sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.app__logo {
+    width: 200px;
+    height: 200px;
+}

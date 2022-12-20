@@ -1,30 +1,31 @@
 import React from 'react';
-import ChatWindow from "./ChatWindow/ChatWindow";
-import ChatForm from "./ChatForm/ChatForm";
-import Popup from "./Popup/Popup";
-import useLocalStorage from "./hooks/useLocalStorage";
+import ChatWindow from "./components/ChatWindow/ChatWindow";
+import ChatForm from "./components/ChatForm/ChatForm";
+import Popup from "./components/Popup/Popup";
+import "./App.css";
+import logo from "./logo/logo.png";
 
 const defaultChat = [{
-        author: "Одинокий голубь",
+        author: "Одинокий тюлень",
         id: 1,
-        text: "Привет!",
+        text: `Привет, ${sessionStorage.getItem("author") || "Незнакомец"}!`,
         received: true
     },
     {
-        author: "Одинокий голубь",
+        author: "Одинокий тюлень",
         id: 2,
         text: "Это чат для одиноких или странных",
         received: true
     },
     {
-        author: "Одинокий голубь",
+        author: "Одинокий тюлень",
         id: 3,
         text: "Тут тебя примут таким(ой), какой ты есть, ведь ты общаешься сам(а) с собой",
         received: true
     }]
 
 const App = () => {
-    const [chat, setChat] = React.useState(defaultChat);
+    const [chat, setChat] = React.useState([]);
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
     const author = sessionStorage.getItem("author");
     const storedChat = localStorage.getItem("chat");
@@ -49,7 +50,7 @@ const App = () => {
             }
         })
 
-    }, [chat])
+    }, [chat, storedChat])
 
     const onSendMessage = (text) => {
         const message = {
@@ -66,14 +67,17 @@ const App = () => {
     const onSetAuthor = (text) => {
         sessionStorage.setItem("author", text);
         setIsPopupOpen(false);
+        setChat(defaultChat);
     }
 
     return (
-        <>
+        <div className="app">
+            <img className="app__logo" src={logo} />
+            <h1>Extremely lonely chat</h1>
             <ChatWindow chat={chat}/>
             <ChatForm onSendMessage={onSendMessage}/>
             <Popup isOpen={isPopupOpen} setIsOpen={setIsPopupOpen} onSetAuthor={onSetAuthor}/>
-        </>
+        </div>
     );
 };
 

@@ -12,12 +12,10 @@ const Message = ({ message }) => {
     }
 
     return (
-        <>
-            <div>
-                <p className={authorClasses.join(' ')}>{message.author}</p>
-                <p className={textClasses.join(' ')}>{message.text}</p>
-            </div>
-        </>
+        <div className={styles.message}>
+            <p className={authorClasses.join(' ')}>{message.author}</p>
+            <p className={textClasses.join(' ')}>{message.text}</p>
+        </div>
     );
 };
 
